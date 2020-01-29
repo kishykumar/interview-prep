@@ -1,0 +1,45 @@
+In computer science, a selection algorithm is an algorithm for finding the kth smallest number in a list or array; such a number is called the kth order statistic.
+
+- A median-finding algorithm can find the i th smallest element in a list in O(n) time.
+
+https://rcoh.me/posts/linear-time-median-finding/
+https://www.geeksforgeeks.org/kth-smallestlargest-element-unsorted-array-set-3-worst-case-linear-time/
+
+Other approaches have also been discussed that take nlogn time (using min and max heaps)
+
+My notes:
+
+Algo: 
+
+1. Divide list in sublists of length 5. 
+2. Quick sort those and find median. 
+3. Find median of those #2 medians recursively by repeating steps #1 to #3. 
+4. The medOfMedians obtained after #3 will be the pivot on which the list will partitioned. 
+5. After #4, the elements on the left of #3 are smaller than medOfMedians and to the right are larger than it. 
+6. Locate the index of medOfMedians. 
+    1. If the medOfMedians < k, recurse from #1 on the left list. 
+    2. If the medOfMedians > k, recurse from #1 on the right list. 
+7. Stop when medOfMedians == k
+
+Complexity Analysis: 
+n/5 medians 
+
+Median of n/5 medians => n/10 medians are smaller than this medianOfMedians
+Now, every median has 2 elements smaller than it. 
+=> n/10* 3 = 3n/10 numbers are smaller than medianOfMedians. 
+
+In the worst case, we will recurse this algorithm over 7n/10 elements. 
+
+To find medianOfMedians, 
+
+
+=====
+
+Step 2 - O(n)
+Step 3 - O(n/5 + n/25+ n/125…) => O(n)
+Step 4/5 - Partition - Loop over all the elements just once O(n)
+Step 6 - 
+
+3n/10 - 7n/10
+
+Worst case - n + 7/10(n + 7/10n + n7/10^2 + n7/10^3…) = n (1+c+c^2 + c^3…) where c < 1 = n

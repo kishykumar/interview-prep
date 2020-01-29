@@ -1,0 +1,15 @@
+
+https://www.khanacademy.org/computing/computer-science/algorithms/quick-sort/a/overview-of-quicksort
+
+1. The Divide Step in the Quicksort partitions the arrays. 
+2. Conquer recursively goes into sub-arrays and does #1.
+3. No Combine Step necessary. 
+
+Complexity Analysis: 
+Quick sort's worst case time complexity is still O(n^2), but average case is O(n logn) because it's difficult to get a bad pivot every single time.
+This happens if the pivot is consistently chosen so that all (or too many of) the elements in the array are < the pivot or > than the pivot.
+
+ 
+- The Conquer stage can be parallelized. 
+- Randomized Quick Sort is usually a good pivot. 
+- Median-of-medians Algorithm can be used to find a good pivot for quicksort, but it may be slow
